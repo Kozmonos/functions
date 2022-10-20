@@ -4,7 +4,7 @@
   "description": "Kozmonos global functions",
   "main": "index.js",
   "scripts": {
-    "build": "uglify-js --compress --mangle --output ./index.min.js -- ./index.js"
+    "build": "uglifyjs --compress --mangle --output ./index.min.js -- ./index.js"
   },
   "keywords": [
     "js functions",

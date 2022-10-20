@@ -12,7 +12,7 @@ const CACHE_PATH = this.checkAlias("@cache")
   : DEFAULT_CACHE_PATH;
 //----
 
-module.exports.basePath = =>path.resolve("./")
+module.exports.basePath = path.resolve("./")
 
 module.exports.capitalizeFirstLetter=(string)=> 
    string.charAt(0).toUpperCase() + string.slice(1)
