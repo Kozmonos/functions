@@ -12,7 +12,7 @@ const CACHE_PATH = checkAlias("@cache")
   : DEFAULT_CACHE_PATH;
 //----
 
-function checkAlias=(path) => {
+function checkAlias(path){
   const firstPart=this.pathToAlias(path).split("/")[0]
   return firstPart=="undefined"
     ? false
