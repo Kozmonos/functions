@@ -2,7 +2,7 @@
   "name": "@kozmonos/functions",
   "version": "0.0.1",
   "description": "Kozmonos global functions",
-  "main": "index.js",
+  "main": "index.min.js",
   "scripts": {
     "build": "uglifyjs --compress --mangle --output ./index.min.js -- ./index.js"
   },
