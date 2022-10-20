@@ -4,9 +4,15 @@
   "description": "Kozmonos global functions",
   "main": "index.js",
   "scripts": {
-    "build":"npx -y uglify-js --compress --mangle --output ./index.min.js -- ./index.js"
+    "build": "uglify-js --compress --mangle --output ./index.min.js -- ./index.js"
   },
-  "keywords": ["js functions","js global functions"],
+  "keywords": [
+    "js functions",
+    "js global functions"
+  ],
   "author": "Onur Ayçiçek <onur.m.aycicek@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "uglify-js": "^3.17.3"
+  }
 }
