@@ -3,6 +3,29 @@ const glob = require('glob');
 const path = require('path');
 
 //-------
+
+const basePath = path.resolve("./")
+
+const pathToAlias=(path) => {
+  if(path.startsWith("@")){
+    const packageJson = require(`${ basePath }/package.json`);
+    const pathParts = path.split('/');
+    const alias=packageJson._moduleAliases[pathParts[0]]
+    return `${alias}/${pathParts.slice(1).join('/')}`;
+  } else
+     return path
+}
+
+const checkAlias=(path) =>{
+  const firstPart=pathToAlias(path).split("/")[0]
+  return firstPart=="undefined"
+    ? false
+    : true
+}
+
+//-------
+
+//-------
 const DEFAULT_CACHE_PATH = `${ this.basePath }/cache`;
 //-------
 
@@ -12,14 +35,13 @@ const CACHE_PATH = checkAlias("@cache")
   : DEFAULT_CACHE_PATH;
 //----
 
-function checkAlias(path){
-  const firstPart=this.pathToAlias(path).split("/")[0]
-  return firstPart=="undefined"
-    ? false
-    : true
-}
 
-module.exports.basePath = path.resolve("./")
+
+
+
+module.exports.basePath = basePath
+
+module.exports.pathToAlias=pathToAlias
 
 module.exports.capitalizeFirstLetter=(string)=> 
    string.charAt(0).toUpperCase() + string.slice(1)
@@ -31,15 +53,6 @@ module.exports.toKebabCase = str =>
     .map(x => x.toLowerCase())
     .join('-');
 
-module.exports.pathToAlias=(path) => {
-  if(path.startsWith("@")){
-    const packageJson = require(`${ this.basePath }/package.json`);
-    const pathParts = path.split('/');
-    const alias=packageJson._moduleAliases[pathParts[0]]
-    return `${alias}/${pathParts.slice(1).join('/')}`;
-  } else
-     return path
-}
 
 module.exports.file={
   read: (path) => 
