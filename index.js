@@ -5,6 +5,8 @@ const path = require('path');
 //-------
 
 const basePath = path.resolve("./")
+const pathDirName = path.dirname
+
 
 const pathToAlias=(path) => {
   if(path.startsWith("@")){
@@ -59,7 +61,7 @@ module.exports.file={
     fs.readFileSync(this.pathToAlias(path),"utf-8").toString(),
 
   write: ({path,content,cb}) => {
-    const getDirName = path.dirname
+    const getDirName = pathDirName
     const aliasPath = this.pathToAlias(path)
   
     fs.mkdir(getDirName(aliasPath), {recursive: true}, function (err) {
