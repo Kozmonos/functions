@@ -1,6 +1,6 @@
 {
   "name": "@kozmonos/functions",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Kozmonos global functions",
   "main": "index.min.js",
   "scripts": {

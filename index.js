@@ -7,10 +7,17 @@ const DEFAULT_CACHE_PATH = `${ this.basePath }/cache`;
 //-------
 
 //-------
-const CACHE_PATH = this.checkAlias("@cache")
+const CACHE_PATH = checkAlias("@cache")
   ? this.pathToAlias("@cache")
   : DEFAULT_CACHE_PATH;
 //----
+
+function checkAlias=(path) => {
+  const firstPart=this.pathToAlias(path).split("/")[0]
+  return firstPart=="undefined"
+    ? false
+    : true
+}
 
 module.exports.basePath = path.resolve("./")
 
@@ -32,13 +39,6 @@ module.exports.pathToAlias=(path) => {
     return `${alias}/${pathParts.slice(1).join('/')}`;
   } else
      return path
-}
-
-module.exports.checkAlias=(path) => {
-  const firstPart=this.pathToAlias(path).split("/")[0]
-  return firstPart=="undefined"
-    ? false
-    : true
 }
 
 module.exports.file={
